@@ -1,0 +1,28 @@
+# Add 'docs' label to any markdown updates
+documentation:
+  - any: ['README.md', 'CHANGELOG.md', 'SECURITY.md', '**/*.md']
+
+# Add 'iac' label to any change within the 'components' or 'modules' folders
+iac:
+  - components/*
+  - components/**/*
+  - modules/*
+  - modules/**/*
+
+# Add 'tooling' label to any change in the tools dir
+tooling:
+  - tools/**/*.py
+
+# Add 'repo' label to any changes to dotfiles etc
+repo:
+  - .gitignore
+  - .nvmrc
+  - .pre-commit-config.yaml
+  - .python-version
+  - .terraform-version
+  - .terragrunt-version
+  - package.json
+  - package-lock.json
+  - poetry.lock
+  - pyproject.toml
+  - setup.cfg

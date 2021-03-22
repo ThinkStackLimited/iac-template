@@ -1,0 +1,11 @@
+{
+  "ResourceTypeFilters": [
+    "AWS::AllSupported"
+  ],
+  "TagFilters": [
+    {
+      "Key": "component_root",
+      "Values": ["bootstrap"]
+    }
+  ]
+}
