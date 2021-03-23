@@ -20,6 +20,7 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+        if: github.repository != 'ThinkStackLimited/iac-template'
 
       - name: Release
         env:
