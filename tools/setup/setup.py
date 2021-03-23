@@ -37,7 +37,7 @@ template.stream(
 
 # Render the .env-config.yaml file
 template = env.get_template(".env-config.yaml")
-template.stream(aws_account_id=aws_account_id,).dump(".env-config.yaml")
+template.stream(aws_account_id=aws_account_id).dump(".env-config.yaml")
 
 # Render the terragrunt.hcl file
 template = env.get_template("components/terragrunt.hcl")
