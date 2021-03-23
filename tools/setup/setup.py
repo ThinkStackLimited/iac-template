@@ -12,7 +12,7 @@ aws_region = input("The AWS region (e.g. eu-west-2): ")
 aws_root_account_id = input("The AWS Account identifier (e.g. 600123456789): ")
 tfstate_bucket_name = input("The Terraform bucket prefix (e.g. acme-tfstate): ")
 
-env = Environment(loader=FileSystemLoader("."))
+env = Environment(loader=FileSystemLoader("."), autoescape=True)
 
 # Render the README file
 template = env.get_template("README.md")
@@ -37,9 +37,7 @@ template.stream(
 
 # Render the .env-config.yaml file
 template = env.get_template(".env-config.yaml")
-template.stream(
-    aws_root_account_id=aws_root_account_id,
-).dump(".env-config.yaml")
+template.stream(aws_root_account_id=aws_root_account_id,).dump(".env-config.yaml")
 
 # Render the terragrunt.hcl file
 template = env.get_template("components/terragrunt.hcl")
