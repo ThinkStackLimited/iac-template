@@ -23,6 +23,15 @@ manage the AWS resources.
 * [Python v3](https://www.python.org/downloads/) will co-ordinate the deployment of resources via Terragrunt.
 * [Poetry](https://python-poetry.org/docs/) will be used to manage the Python build environment.
 
+## Pre-requisites
+
+Ensure your target GitHub repo has the following secrets for the actions to work:
+
+* CODECOV_TOKEN
+* GITHUB_TOKEN
+
+If not present, the steps will simply not be executed
+
 ## Run Template Update
 
 This command will take input and run Jinja template updates against certain files to seed the repo with organisation

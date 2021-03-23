@@ -42,3 +42,4 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           file: ./coverage.xml
+        if: ${{ secrets.CODECOV_TOKEN != '' }}
