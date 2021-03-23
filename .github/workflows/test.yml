@@ -1,0 +1,50 @@
+name: Test
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8.8
+
+      - name: Setup Poetry
+        uses: Gr1N/setup-poetry@v4
+        with:
+          poetry-version: 1.0.5
+        if: github.repository != 'ThinkStackLimited/iac-template'
+
+      - name: Cache VirtualEnv
+        uses: actions/cache@v2
+        id: cache-venv
+        with:
+          path: /home/runner/work/iac/iac/.venv
+          key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
+        if: github.repository != 'ThinkStackLimited/iac-template'
+
+      - name: Install Dependencies
+        if: steps.cache-venv.outputs.cache-hit != 'true' && github.repository != 'ThinkStackLimited/iac-template'
+        run: make setup
+
+      - name: Run tests
+        run: make test
+        if: github.repository != 'ThinkStackLimited/iac-template'
+
+      - name: Upload coverage report
+        uses: codecov/codecov-action@v1.0.14
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: ./coverage.xml
+        if: env.CODECOV_TOKEN != '' && github.repository != 'ThinkStackLimited/iac-template'

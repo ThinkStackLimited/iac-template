@@ -1,0 +1,10 @@
+---
+component_roots:
+  - bootstrap
+
+invalid-component:
+  inputs:
+    environments:
+      root: "600123456789"
+  bootstrap:
+    resource_groups: null
