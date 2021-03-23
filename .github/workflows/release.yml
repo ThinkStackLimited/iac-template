@@ -25,4 +25,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx semantic-release
-        if: ${{ env.GITHUB_TOKEN != '' }}
+        if: env.GITHUB_TOKEN != '' && github.repository != 'ThinkStackLimited/iac-template'
