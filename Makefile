@@ -50,7 +50,14 @@ plan: ## Plan a terraform run
 setup: check ## Setup virtualenv & dependencies using poetry
 	export POETRY_VIRTUALENVS_IN_PROJECT=$(POETRY_VIRTUALENVS_IN_PROJECT) && poetry run pip install --upgrade pip
 	poetry install --no-root
-	poetry run python tools/setup/setup.py
+
+
+template: check ## Setup virtualenv and run template script
+	python -m venv .venv
+	source .venv/bin/activate
+	pip install --upgrade pip
+	pip install Jinja2
+	python tools/setup/setup.py
 
 test: bandit black ## Run tests
 	export PYTHONPATH="${PYTHONPATH}:`pwd`/tools/environments" && export TG_ENV=pytest && poetry run pytest -o log_cli=true -vvvv ./tools/environments/test.py
