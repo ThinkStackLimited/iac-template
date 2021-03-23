@@ -25,4 +25,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx semantic-release
-        if: ${{ secrets.GITHUB_TOKEN != '' }}
+        if: ${{ env.GITHUB_TOKEN != '' }}
