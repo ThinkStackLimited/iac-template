@@ -22,6 +22,7 @@ jobs:
         uses: Gr1N/setup-poetry@v4
         with:
           poetry-version: 1.0.5
+        if: github.repository != 'ThinkStackLimited/iac-template'
 
       - name: Cache VirtualEnv
         uses: actions/cache@v2
@@ -29,13 +30,15 @@ jobs:
         with:
           path: /home/runner/work/iac/iac/.venv
           key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
+        if: github.repository != 'ThinkStackLimited/iac-template'
 
       - name: Install Dependencies
-        if: steps.cache-venv.outputs.cache-hit != 'true'
+        if: steps.cache-venv.outputs.cache-hit != 'true' && github.repository != 'ThinkStackLimited/iac-template'
         run: make setup
 
       - name: Run tests
         run: make test
+        if: github.repository != 'ThinkStackLimited/iac-template'
 
       - name: Upload coverage report
         uses: codecov/codecov-action@v1.0.14
@@ -44,4 +47,4 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           file: ./coverage.xml
-        if: ${{ env.CODECOV_TOKEN != '' }}
+        if: env.CODECOV_TOKEN != '' && github.repository != 'ThinkStackLimited/iac-template'
