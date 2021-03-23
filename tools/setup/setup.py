@@ -2,18 +2,15 @@
 from jinja2 import Environment
 from jinja2 import FileSystemLoader
 
-package_name = input("Enter your package name (e.g. acme-limited-iac-project): ")
-package_description = input("Enter your package description: ")
-package_repo_url = input(
-    "Enter your GitHub repository URL (e.g. git@github.com:acme-limited/iac.git): "
-)
-github_org = input("Enter your GitHub Organisation: ")
-package_author = input("Enter your full name (e.g. Joe Smith): ")
-aws_region = input("Enter your AWS region (e.g. eu-west-2): ")
-tfstate_bucket_name = input(
-    "Enter your Terraform State S3 bucket name prefix: (e.g. acme-limited-tfstate):"
-)
-organisation_name = input("Enter your company's name: Acme Limited")
+organisation_name = input("Enter the company name (e.g. Acme Limited): ")
+package_author = input("Your full name (e.g. Joe Smith): ")
+github_org = input("The GitHub Organisation (e.g. AcmeLtd): ")
+package_repo_url = input("The GitHub URL (e.g. git@github.com:acme/iac.git): ")
+package_name = input("The package name (e.g. acme-iac-project): ")
+package_description = input("The package description: ")
+aws_region = input("The AWS region (e.g. eu-west-2): ")
+aws_root_account_id = input("The AWS Account identifier (e.g. 600123456789): ")
+tfstate_bucket_name = input("The Terraform bucket prefix (e.g. acme-tfstate): ")
 
 env = Environment(loader=FileSystemLoader("."))
 
@@ -37,6 +34,12 @@ template.stream(
     package_author=package_author,
     package_description=package_description,
 ).dump("pyproject.toml")
+
+# Render the .env-config.yaml file
+template = env.get_template(".env-config.yaml")
+template.stream(
+    aws_root_account_id=aws_root_account_id,
+).dump(".env-config.yaml")
 
 # Render the terragrunt.hcl file
 template = env.get_template("components/terragrunt.hcl")
