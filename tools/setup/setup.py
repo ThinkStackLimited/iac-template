@@ -39,6 +39,12 @@ template.stream(
 template = env.get_template(".env-config.yaml")
 template.stream(aws_account_id=aws_account_id).dump(".env-config.yaml")
 
+# Render the tools/environments/iac.py file
+template = env.get_template("tools/environments/iac.py")
+template.stream(package_description=package_description).dump(
+    "tools/environments/iac.py"
+)
+
 # Render the terragrunt.hcl file
 template = env.get_template("components/terragrunt.hcl")
 template.stream(
