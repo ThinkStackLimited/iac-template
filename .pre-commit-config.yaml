@@ -1,6 +1,6 @@
 repos:
   - repo: git://github.com/pre-commit/pre-commit-hooks
-    rev: v3.3.0
+    rev: v3.4.0
     hooks:
       - id: no-commit-to-branch
         args: [--branch, main, --branch, master]
@@ -12,25 +12,28 @@ repos:
       - id: trailing-whitespace
       - id: end-of-file-fixer
   - repo: git://github.com/antonbabenko/pre-commit-terraform
-    rev: v1.45.0
+    rev: v1.48.0
     hooks:
       - id: terraform_fmt
+      - id: terraform_validate
       - id: terraform_docs
+      - id: terraform_tflint
+      - id: terraform_tfsec
   - repo: https://github.com/gruntwork-io/pre-commit
-    rev: v0.1.10
+    rev: v0.1.12
     hooks:
       - id: terragrunt-hclfmt
   - repo: https://github.com/asottile/reorder_python_imports
-    rev: v2.3.6
+    rev: v2.4.0
     hooks:
       - id: reorder-python-imports
   - repo: https://github.com/python/black
-    rev: stable
+    rev: 20.8b1
     hooks:
       - id: black
   - repo: https://github.com/PyCQA/bandit
-    rev: 1.6.2
+    rev: 1.7.0
     hooks:
       - id: bandit
-        args: [-ll, -s, B322]
+        args: [-ll  ]
         language_version: python3
