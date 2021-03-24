@@ -5,6 +5,7 @@ Implements the development, testing and maintenance of {{organisation_name}}'s i
 <!-- toc -->
 
 - [Requirements](#requirements)
+- [Pre-requisites](#pre-requisites)
 - [Run Template Update](#run-template-update)
 - [Setup](#setup)
 - [Testing](#testing)
