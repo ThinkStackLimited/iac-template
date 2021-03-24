@@ -12,7 +12,9 @@ aws_region = input("The AWS region (e.g. eu-west-2): ")
 aws_account_id = input("The AWS Account identifier (e.g. 600123456789): ")
 tfstate_bucket_name = input("The Terraform bucket prefix (e.g. acme-tfstate): ")
 
-env = Environment(loader=FileSystemLoader("."), autoescape=True)
+env = Environment(
+    loader=FileSystemLoader("."), autoescape=True, keep_trailing_newline=True
+)
 
 # Render the README file
 template = env.get_template("README.md")
