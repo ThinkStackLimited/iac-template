@@ -36,8 +36,7 @@ bandit: ## Run bandit
 	poetry run bandit -ll ./tools/**/*.py --exclude tools/environments/test.py
 
 black: ## Run black
-	poetry run black ./tools/environments/*.py
-	poetry run black ./tools/setup/*.py
+	poetry run black ./tools/**/*.py
 
 bootstrap_plan: ## Plan the bootstrapping of an environment
 	python tools/environments/iac.py --environment ${TG_ENV} --bootstrap
