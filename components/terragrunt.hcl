@@ -38,11 +38,9 @@ generate provider {
 
 inputs = {
   aws_region                   = local.aws_region
-  blog_build_agent             = local.blog_build_agent
   environment                  = local.environment
   environments                 = local.environments
   github_org                   = local.github_org
-  iac_build_agent              = local.iac_build_agent
   terraform_version            = local.terraform_version
   terragrunt_version           = local.terragrunt_version
   tfstate_global_bucket        = local.tfstate_bucket
