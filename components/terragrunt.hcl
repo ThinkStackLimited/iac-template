@@ -1,11 +1,11 @@
 locals {
-  aws_region         = "{{aws_region}}"
+  aws_region         = "eu-west-2"
   environment        = get_env("TG_ENV", "")
   environments       = get_env("TG_ENVS", "{}")
-  github_org         = "{{github_org}}"
+  github_org         = "scalably"
   terraform_version  = file("../.terraform-version")
   terragrunt_version = file("../.terragrunt-version")
-  tfstate_bucket     = "{{tfstate_bucket_name}}-tfstate-${local.environment}-${get_aws_account_id()}"
+  tfstate_bucket     = "scalably-zwt-tfstate-${local.environment}-${get_aws_account_id()}"
   tfstate_key        = "${path_relative_to_include()}/terraform.tfstate"
 
   tags = {

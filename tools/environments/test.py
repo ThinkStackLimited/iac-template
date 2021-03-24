@@ -33,7 +33,7 @@ def test_validate_args(caplog):
     sys.argv.append("--debug")
     iac.main()
 
-    assert caplog.records[0].msg == 'TG_ENVIRONMENTS - {"root": "{{aws_account_id}}"}'
+    assert caplog.records[0].msg == 'TG_ENVIRONMENTS - {"root": "649115683993"}'
     index = 0
     for component in ["resource_groups"]:
         assert caplog.records[index + 1].msg == f"\nProcessing bootstrap: {component}\n"
@@ -51,7 +51,7 @@ def test_iac_no_dry_run(mock_subprocess, caplog):
     sys.argv.append("--env=root")
     iac.main()
 
-    assert caplog.records[0].msg == 'TG_ENVIRONMENTS - {"root": "{{aws_account_id}}"}'
+    assert caplog.records[0].msg == 'TG_ENVIRONMENTS - {"root": "649115683993"}'
     assert caplog.records[1].msg == "\nProcessing bootstrap: resource_groups\n"
 
 
@@ -87,7 +87,7 @@ def test_iac_apply(mock_subproc_run, caplog):
 
     iac.main()
 
-    assert caplog.records[0].msg == 'TG_ENVIRONMENTS - {"root": "{{aws_account_id}}"}'
+    assert caplog.records[0].msg == 'TG_ENVIRONMENTS - {"root": "649115683993"}'
     assert caplog.records[1].msg == "\nProcessing bootstrap: resource_groups\n"
     assert (
         caplog.records[2].msg
@@ -103,7 +103,7 @@ def test_invalid_component_root(caplog):
     sys.argv.append("--component-root=test")
     iac.main()
 
-    assert caplog.records[0].msg == 'TG_ENVIRONMENTS - {"root": "{{aws_account_id}}"}'
+    assert caplog.records[0].msg == 'TG_ENVIRONMENTS - {"root": "649115683993"}'
     assert caplog.records[1].msg == "\nNo component found for test: None\n"
 
 

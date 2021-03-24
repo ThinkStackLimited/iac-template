@@ -1,9 +1,9 @@
 [tool.poetry]
-name = "{{package_name}}"
+name = "scalably-zwt-iac-project"
 version = "0.1.0"
 description = "Python wrapper for terragrunt"
 readme = "README.md"
-authors = ["{{package_author}}"]
+authors = ["Lee Myring"]
 
 [tool.poetry.dependencies]
 python = "^3.8"

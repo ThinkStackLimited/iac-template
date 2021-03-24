@@ -1,6 +1,6 @@
 {
-  "name": "{{package_name}}",
-  "description": "{{package_description}}",
+  "name": "scalably-zwt-iac-project",
+  "description": "Infrastructure as Code for Zalando Wholesale Transfer",
   "version": "1.0.0",
   "private": true,
   "license": "UNLICENSED",
@@ -8,7 +8,7 @@
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "{{package_repo_url}}"
+    "url": "git@github.com:scalably/zalando-wholesale-transfer-intrastructure-as-code.git"
   },
   "keywords": [
     "terraform",
@@ -16,7 +16,7 @@
     "iac",
     "aws"
   ],
-  "author": "{{package_author}}",
+  "author": "Lee Myring",
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",

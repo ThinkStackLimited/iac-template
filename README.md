@@ -1,10 +1,11 @@
 # Infrastructure as Code (iac)
 
-Implements the development, testing and maintenance of {{organisation_name}}'s infrastructure.
+Implements the development, testing and maintenance of Scalably Limited's infrastructure.
 
 <!-- toc -->
 
 - [Requirements](#requirements)
+- [Pre-requisites](#pre-requisites)
 - [Run Template Update](#run-template-update)
 - [Setup](#setup)
 - [Testing](#testing)

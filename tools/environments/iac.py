@@ -23,7 +23,9 @@ def set_log_level(level):
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="{{package_description}}")
+    parser = argparse.ArgumentParser(
+        description="Infrastructure as Code for Zalando Wholesale Transfer"
+    )
     parser.add_argument(
         "-e", "--environment", action="store", help="Environment to build", dest="env"
     )

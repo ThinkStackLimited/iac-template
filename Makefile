@@ -33,10 +33,10 @@ apply: ## Apply terraform
 	python tools/environments/iac.py --environment ${TG_ENV} --apply
 
 bandit: ## Run bandit
-	poetry run bandit -ll ./tools/environments/*.py --exclude tools/environments/test.py
+	poetry run bandit -ll ./tools/**/*.py --exclude tools/environments/test.py
 
 black: ## Run black
-	poetry run black ./tools/environments/*.py
+	poetry run black ./tools/**/*.py
 
 bootstrap_plan: ## Plan the bootstrapping of an environment
 	python tools/environments/iac.py --environment ${TG_ENV} --bootstrap
@@ -50,7 +50,6 @@ plan: ## Plan a terraform run
 setup: check ## Setup virtualenv & dependencies using poetry
 	export POETRY_VIRTUALENVS_IN_PROJECT=$(POETRY_VIRTUALENVS_IN_PROJECT) && poetry run pip install --upgrade pip
 	poetry install --no-root
-
 
 template: check ## Setup virtualenv and run template script
 	python -m venv .venv
